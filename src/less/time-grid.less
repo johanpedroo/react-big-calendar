@@ -70,6 +70,23 @@
     border-bottom: 1px solid @cell-border;
   }
 
+  &-cell{
+    .header-label{
+      height: 130px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .day-label{
+        font-size: 2em;
+      }
+      .day-week-label{
+        font-size: 1.5em;
+      }
+    }
+
+  }
+
   // .rbc-gutter-cell {
   //   flex: none;
   // }
@@ -97,12 +114,13 @@
   flex: 1 0 0%;
   align-items: flex-start;
   width: 100%;
-  border-top: 2px solid @calendar-border;
+  //border-top: 2px solid @calendar-border;
   overflow-y: auto;
   position: relative;
 
   > .rbc-time-gutter {
     flex: none;
+    display: none;
   }
 
   > * + * > * {

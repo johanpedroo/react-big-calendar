@@ -7,6 +7,7 @@ import TimeGrid from './TimeGrid'
 class Week extends React.Component {
   static propTypes = {
     date: PropTypes.instanceOf(Date).isRequired,
+    disableAllDayBar: PropTypes.bool,
   }
 
   static defaultProps = TimeGrid.defaultProps

@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-
 import BackgroundWrapper from './BackgroundWrapper'
 
 export default class TimeSlotGroup extends Component {
@@ -31,6 +30,9 @@ export default class TimeSlotGroup extends Component {
               <div
                 {...slotProps}
                 className={cn('rbc-time-slot', slotProps.className)}
+                data-time={`${value.getHours()}:${(value.getMinutes() < 10
+                  ? '0'
+                  : '') + value.getMinutes()}`}
               >
                 {renderSlot && renderSlot(value, idx)}
               </div>

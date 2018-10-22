@@ -36,13 +36,12 @@ export default class TimeGutter extends Component {
   }
 
   renderSlot = (value, idx) => {
-    if (idx !== 0) return null
     const { localizer, getNow } = this.props
 
     const isNow = this.slotMetrics.dateIsInGroup(getNow(), idx)
     return (
       <span className={cn('rbc-label', isNow && 'rbc-now')}>
-        {localizer.format(value, 'timeGutterFormat')}
+        {localizer.format(value, 'HH:mm')}
       </span>
     )
   }
@@ -55,6 +54,9 @@ export default class TimeGutter extends Component {
         {this.slotMetrics.groups.map((grp, idx) => {
           return (
             <TimeSlotGroup
+              dates={grp.map(data =>
+                this.props.localizer.format(data, 'HH:mm')
+              )}
               key={idx}
               group={grp}
               resource={resource}

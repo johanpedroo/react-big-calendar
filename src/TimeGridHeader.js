@@ -34,6 +34,7 @@ class TimeGridHeader extends React.Component {
     onDrillDown: PropTypes.func,
     getDrilldownView: PropTypes.func.isRequired,
     scrollRef: PropTypes.any,
+    disableAllDayBar: PropTypes.bool,
   }
 
   handleHeaderClick = (date, view, e) => {
@@ -97,6 +98,7 @@ class TimeGridHeader extends React.Component {
       localizer,
       accessors,
       components,
+      disableAllDayBar,
     } = this.props
 
     const resourceId = accessors.resourceId(resource)
@@ -105,26 +107,28 @@ class TimeGridHeader extends React.Component {
       : events
 
     return (
-      <DateContentRow
-        isAllDay
-        rtl={rtl}
-        getNow={getNow}
-        minRows={2}
-        range={range}
-        events={eventsToDisplay}
-        resourceId={resourceId}
-        className="rbc-allday-cell"
-        selectable={selectable}
-        selected={this.props.selected}
-        components={components}
-        accessors={accessors}
-        getters={getters}
-        localizer={localizer}
-        onSelect={this.props.onSelectEvent}
-        onDoubleClick={this.props.onDoubleClickEvent}
-        onSelectSlot={this.props.onSelectSlot}
-        longPressThreshold={this.props.longPressThreshold}
-      />
+      !disableAllDayBar && (
+        <DateContentRow
+          isAllDay
+          rtl={rtl}
+          getNow={getNow}
+          minRows={2}
+          range={range}
+          events={eventsToDisplay}
+          resourceId={resourceId}
+          className="rbc-allday-cell"
+          selectable={selectable}
+          selected={this.props.selected}
+          components={components}
+          accessors={accessors}
+          getters={getters}
+          localizer={localizer}
+          onSelect={this.props.onSelectEvent}
+          onDoubleClick={this.props.onDoubleClickEvent}
+          onSelectSlot={this.props.onSelectSlot}
+          longPressThreshold={this.props.longPressThreshold}
+        />
+      )
     )
   }
 
@@ -143,6 +147,7 @@ class TimeGridHeader extends React.Component {
       scrollRef,
       localizer,
       isOverflowing,
+      disableAllDayBar,
       components: { timeGutterHeader: TimeGutterHeader },
     } = this.props
 
@@ -181,26 +186,28 @@ class TimeGridHeader extends React.Component {
                 {this.renderHeaderCells(range)}
               </div>
             )}
-            <DateContentRow
-              isAllDay
-              rtl={rtl}
-              getNow={getNow}
-              minRows={2}
-              range={range}
-              events={groupedEvents.get(id) || []}
-              resourceId={resource && id}
-              className="rbc-allday-cell"
-              selectable={selectable}
-              selected={this.props.selected}
-              components={components}
-              accessors={accessors}
-              getters={getters}
-              localizer={localizer}
-              onSelect={this.props.onSelectEvent}
-              onDoubleClick={this.props.onDoubleClickEvent}
-              onSelectSlot={this.props.onSelectSlot}
-              longPressThreshold={this.props.longPressThreshold}
-            />
+            {!disableAllDayBar && (
+              <DateContentRow
+                isAllDay
+                rtl={rtl}
+                getNow={getNow}
+                minRows={2}
+                range={range}
+                events={groupedEvents.get(id) || []}
+                resourceId={resource && id}
+                className="rbc-allday-cell"
+                selectable={selectable}
+                selected={this.props.selected}
+                components={components}
+                accessors={accessors}
+                getters={getters}
+                localizer={localizer}
+                onSelect={this.props.onSelectEvent}
+                onDoubleClick={this.props.onDoubleClickEvent}
+                onSelectSlot={this.props.onSelectSlot}
+                longPressThreshold={this.props.longPressThreshold}
+              />
+            )}
           </div>
         ))}
       </div>

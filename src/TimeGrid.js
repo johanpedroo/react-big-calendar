@@ -49,6 +49,7 @@ export default class TimeGrid extends Component {
     onDoubleClickEvent: PropTypes.func,
     onDrillDown: PropTypes.func,
     getDrilldownView: PropTypes.func.isRequired,
+    disableAllDayBar: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -246,6 +247,7 @@ export default class TimeGrid extends Component {
           onDoubleClickEvent={this.props.onDoubleClickEvent}
           onDrillDown={this.props.onDrillDown}
           getDrilldownView={this.props.getDrilldownView}
+          disableAllDayBar={this.props.disableAllDayBar}
         />
         <div
           ref="content"

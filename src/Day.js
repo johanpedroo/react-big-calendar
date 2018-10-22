@@ -8,6 +8,7 @@ import TimeGrid from './TimeGrid'
 class Day extends React.Component {
   static propTypes = {
     date: PropTypes.instanceOf(Date).isRequired,
+    disableAllDayBar: PropTypes.bool,
   }
 
   render() {

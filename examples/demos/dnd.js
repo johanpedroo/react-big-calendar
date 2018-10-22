@@ -1,6 +1,6 @@
 import React from 'react'
 import events from '../events'
-import BigCalendar from 'react-big-calendar'
+import BigCalendar from '../../src'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
@@ -83,8 +83,9 @@ class Dnd extends React.Component {
         resizable
         onEventResize={this.resizeEvent}
         onSelectSlot={this.newEvent}
-        defaultView={BigCalendar.Views.MONTH}
+        defaultView={BigCalendar.Views.WEEK}
         defaultDate={new Date(2015, 3, 12)}
+        toolbar={false}
       />
     )
   }

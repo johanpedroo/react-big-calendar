@@ -690,6 +690,7 @@ class Calendar extends React.Component {
       noEventsInRange: PropTypes.node,
       showMore: PropTypes.func,
     }),
+    disableAllDayBar: PropTypes.bool,
   }
 
   static defaultProps = {
